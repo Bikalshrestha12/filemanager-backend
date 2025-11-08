@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" },
+    { "src": "src/**/*", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/server.js" }
+  ],
+    "installCommand": "npm install --legacy-peer-deps",
+    "env": {
+        "NODE_ENV": "production",
+        "MONGODB_URI": "mongodb://localhost:27017/filemanager",
+        "JWT_SECRET": "2a12f339242c4daf1ddba4a54a1bb25b",
+        "frontend_URL": "https://filemanager-upcr.vercel.app,https://filemanager-upcr-git-main-shresthabikal44-gmailcoms-projects.vercel.app,http://localhost:5173"
+    }
+}
