@@ -62,29 +62,12 @@ const app = express();
 // -------------------------------
 
 // Support multiple frontend URLs (comma-separated in .env)
-const allowedOrigins = process.env.frontend_URL
-  ? process.env.frontend_URL.split(',').map(url => url.trim())
-  : [];
-
-console.log('✅ Allowed origins:', allowedOrigins);
-
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests from tools or same-origin with no origin header
-    if (!origin) return callback(null, true);
-
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.warn(`❌ CORS blocked request from: ${origin}`);
-      // Deny request but don’t throw 500
-      return callback(null, false);
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: "https://officefilemanagement.netlify.app",
+    credentials: true,
+  })
+);
 
 
 
