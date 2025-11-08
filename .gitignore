@@ -9,3 +9,6 @@ uploads/
 
 # Logs
 *.log
+
+# jeson
+vercel.json
